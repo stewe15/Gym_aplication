@@ -501,7 +501,7 @@ class _AccountState extends State<Account> {
               ),
               (UserName == "")
                   ? Text(
-                      "Вы ещё не вошли в аккаунт  ",
+                      "Вы ещё не вошли в аккаунт",
                       style: TextStyle(fontSize: 20.0, color: Colors.white),
                       softWrap: true,
                     )
@@ -737,7 +737,7 @@ class _RegistrationState extends State<Registration> {
     surnames.add(UserSurname);
     images.add(ImageOne);
     passwords.add(PassWord);
-    
+    dictionary[UserName] = PassWord;
   }
 
   _setPassword(String text) {
@@ -1351,6 +1351,7 @@ class _EnterState extends State<Enter> {
     Zero = trainings[Id];
     PassWord = passwords[Id];
     Run = hope[Id];
+    dictionary[UserName] = PassWord;
   }
 
   _check() {
@@ -1376,6 +1377,14 @@ class _EnterState extends State<Enter> {
         return;
       } else {
         UserName = "Такого пользователя нет";
+      }
+    }
+  }
+
+  _dictionaryCheck() {
+    if (dictionary.containsKey(AddedUser)) {
+      if (dictionary[AddedUser] == AddedPassWord) {
+        _findAPerson();
       }
     }
   }
@@ -1445,8 +1454,7 @@ class _EnterState extends State<Enter> {
                               borderRadius: BorderRadius.circular(18.0),
                               side: BorderSide(color: Colors.red)))),
                   onPressed: () {
-                    _findAPerson();
-
+                    _dictionaryCheck();
                     if (sex = true) {
                       sex = false;
                       Navigator.push(context,

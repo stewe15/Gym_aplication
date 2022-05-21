@@ -38,3 +38,4 @@ String textzero = "";
 int Item = 0;
 int DataId = 0;
 List<List> hope = new List<List>();
+var dictionary = new Map<String, String>();
